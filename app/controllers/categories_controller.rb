@@ -2,6 +2,11 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.new
     @categories = Category.all
+    if true
+      # @main_category = Category.name_category(@categories)
+    else
+      @main_category = 'none'
+    end
   end
 
   def create
