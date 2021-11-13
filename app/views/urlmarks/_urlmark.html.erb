@@ -1,0 +1,12 @@
+ <tr id="urlmark-<%= urlmark.id  %>">
+    <th scope="row"><%= urlmark.id %></th>
+    <td><%= urlmark.url %> </td> <br>
+    <td><%= urlmark.category_id %></td>
+    <td><%= urlmark.type_format_id %></td>
+    <%#= botones con javascript %>
+    <div class="container p-5">
+        <td><%= link_to 'Show', urlmark, remote: true, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_urlmark_path(urlmark), remote: true, class: "btn btn-success"  %></td>
+        <td><%= link_to 'Destroy', urlmark, method: :delete, remote: true, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td> 
+    </div>
+</tr>
