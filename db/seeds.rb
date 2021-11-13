@@ -6,16 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.destroy_all
 Urlmark.destroy_all
+Category.destroy_all
 TypeFormat.destroy_all
 
-#Faker::TvShows::Simpsons.quote
-
-type_format = ["bebida alcoholica", "bebida fantasia"]
-
-type_format.each do |type_format|
+20.times do
     TypeFormat.create(
-        name: type_format
-        )
+        title: Faker::TvShows::Simpsons.character
+    )
+end
+
+6.times do
+    Category.create(
+        title: Faker::TvShows::Simpsons.location
+    )
+end
+
+14.times do
+    Category.create(
+        title: Faker::TvShows::Simpsons.location,
+        category_id: Random.rand(1..8)
+    )
+end
+
+20.times do
+    Urlmark.create(
+        url: Faker::TvShows::Simpsons.quote,
+        category_id: Random.rand(1..20),
+        type_format_id: Random.rand(1..20)
+    )
 end
