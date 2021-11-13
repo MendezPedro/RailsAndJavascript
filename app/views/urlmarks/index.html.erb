@@ -1,2 +1,31 @@
 <h1>Urlmarks#index</h1>
 <p>Find me in app/views/urlmarks/index.html.erb</p>
+
+<%= render 'form', urlmark: @urlmark %>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>url</th>
+      <th>category_id</th>
+      <th>tipe_id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urlmarks.each do |urlmarks| %>
+      <tr>
+        <td><%= urlmarks.url %></td>
+        <td><%= urlmarks.category_id %></td>
+        <td><%= urlmarks.type_format_id %></td>
+        <td><%= link_to 'Show', urlmarks %></td>
+
+        <td><%= link_to 'Destroy', urlmarks, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Categories", categories_path, class: "btn btn-success"  %>
+<%= link_to "type_formats", type_formats_path, class: "btn btn-success"  %>

@@ -1,27 +1,8 @@
 <h1>TypeFormats#index</h1>
 <p>Find me in app/views/type_formats/index.html.erb</p>
-<%= form_with(model: @type, local: true) do |f| %>
-    <% if @type.errors.any? %>
-        <div id = 'error_explanation'>
-            <h2>Este tipo no se pudo crear por las siguientes razones</h2>
-            <ul>
-                <% @type.errors.full_messages.each do |msg|%>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
 
-    <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-group' %>
-    </div>
-    
-    <div class = 'actions'>
-        <%= f.submit %>
-    </div>
-<% end %>
-<br>
+<%= render 'form', type_formats: @type_formart %>
+
 <table class="table table-dark">
   <thead>
     <tr>
@@ -41,3 +22,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "urlMarks", root_path, class: "btn btn-success"  %>

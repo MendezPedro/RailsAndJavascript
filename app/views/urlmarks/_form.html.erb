@@ -1,0 +1,30 @@
+<%= form_with(model: @urlmark, local: true) do |f| %>
+    <% if @urlmark.errors.any? %>
+        <div id = 'error_explanation'>
+            <h2>Este marcador no se pudo crear por las siguientes razones</h2>
+            <ul>
+                <% @urlmark.errors.full_messages.each do |msg|%>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+        <%= f.label :url %>
+        <%= f.text_field :url, class: 'form-group' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :type_format_id %>
+        <%= f.select :type_format_id, options_from_collection_for_select(TypeFormat.all, :id, :title), include_blank: true, class: 'form-group'  %>
+    </div>
+    <div class="form-group">
+        <%= f.label :category_id %>
+        <%= f.select :category_id, options_from_collection_for_select(Category.all, :category_id, :title), include_blank: true, class: 'form-group'  %>
+    </div>
+    
+    <div class = 'actions'>
+        <%= f.submit %>
+    </div>
+<% end %>
+<br>

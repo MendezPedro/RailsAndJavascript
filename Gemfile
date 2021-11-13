@@ -65,3 +65,4 @@ gem "jquery-rails", "~> 4.4"
 
 gem "bootstrap", "~> 4.3.1"
 gem "faker", "~> 2.19"
+gem "chartkick"
