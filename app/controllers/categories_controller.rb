@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   def index
     @category = Category.new
     @categories = Category.all
+    #@title_category = @title_category.name_category(2)
+    #@title_category = @categories.where(id: 6).pluck(:title)[0]
     if true
       # @main_category = Category.name_category(@categories)
     else
@@ -34,31 +36,19 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def update
+  def update 
     @category = Category.find(params[:id])
-    respond_to do |format|
-      if @category.update(category_params)
+    #@category.public = @category.sub_categories.change_public()
+    respond_to do |f|
+      if @category.update!(category_params) 
         # para que la vista no haga nada
         # format.js { render nothing: true, notice: 'update' }
-        format.js { redirect_to categories_path, notice: 'category create' }
+        f.js { redirect_to categories_path, notice: 'category create' }
       else
-        format.html { redirect_to categories_path, alert: 'alert url bookmarks not create' }
+        f.html { redirect_to categories_path, alert: "category no update"}
       end
     end
   end
-
-
-  # def update 
-  #   @category = Category.find(params[:id])
-  #   @category.public = @category.subcategories.public
-  #   respond_to do |f|
-  #     if @category.update!(categry_params) 
-  #       f.html { redirect_to categories_path, notice: "creaste"}
-  #     else
-  #       f.html { redirect_to categories_path, alert: "boo"}
-  #     end
-  #   end
-  # end
 
   def destroy
     @category = Category.find(params[:id])
@@ -77,8 +67,12 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     render json: @category.to_json(include: [:sub_categories, :urlmarks])
   end
-  
 
+  def name_category
+    @category = Category.find(params[:id])
+  end
+  
+  
   private
   def category_params
     params.require(:category).permit(:title, :public, :category_id)
