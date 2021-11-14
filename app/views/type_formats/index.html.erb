@@ -1,25 +1,36 @@
 <h1>Types</h1>
 
-<%= render 'form', type_formats: @type_formart %>
+<div id="type_format-form"></div> 
+<div id="type_format_button">
+    <%= link_to "New type_format", new_type_format_path, class: "btn btn-success", remote: true  %>
+</div> 
+
+<div id="type_format-show"></div> 
 
 <table class="table table-dark">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="type_format-table">
     <% @type_formats.each do |type_format| %>
       <tr>
+        <th scope="row"><%= type_format.id %></th>
         <td><%= type_format.title %></td>
-        <td><%= link_to 'Show', type_format %></td>
-        <td><%= link_to 'Edit', edit_type_format_path(type_format) %></td>
-        <td><%= link_to 'Destroy', type_format, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', type_format, remote: true, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_type_format_path(type_format), remote: true, class: "btn btn-success"  %></td>
+        <td><%= link_to 'Destroy', type_format, method: :delete, remote: true, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= link_to "Book Marks", root_path, class: "btn btn-success"  %>
+
+<%= pie_chart @url_types %>
+
+<%#= pie_chart @url_types2 %>

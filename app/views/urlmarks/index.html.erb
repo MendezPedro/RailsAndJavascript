@@ -3,12 +3,10 @@
 <div id="bookmark-form"></div>
 
 <div id="urlmark-button">
-    <%= link_to "Nueva bookmark", new_urlmark_path, class: "btn btn-success", remote: true  %>
+    <%= link_to "Nueva bookmark", new_urlmark_path, class: "btn btn-success", remote: true, data: { confirm: 'Are you sure create a new bookmark?' }  %>
 </div> 
 
-
 <div id="bookmark-show" class="my-3"></div>
-
 
 <table class="table table-dark">
   <thead>

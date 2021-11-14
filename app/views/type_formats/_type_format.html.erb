@@ -1,0 +1,8 @@
+ <tr id="type_format-<%= type_format.id  %>">
+    <th scope="row"><%= type_format.id %></th>
+    <td><%= type_format.title %> </td> <br>
+    <%#= botones con javascript %>
+    <td><%= link_to 'Show', type_format, remote: true, class: "btn btn-info" %></td>
+    <td><%= link_to 'Edit', edit_type_format_path(type_format), remote: true, class: "btn btn-success"  %></td>
+    <td><%= link_to 'Destroy', type_format, method: :delete, remote: true, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td> 
+</tr>

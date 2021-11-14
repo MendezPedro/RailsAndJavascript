@@ -17,7 +17,7 @@ class UrlmarksController < ApplicationController
     @urlmark = Urlmark.new(urlmarks_params)
     respond_to do |format|
       if @urlmark.save 
-        format.js {  }
+        format.js { redirect_to urlmarks_path, notice: 'urlmark create' }
       else
         format.html { redirect_to urlmarks_path, alert: 'alert url bookmarks not create' }
       end
@@ -34,7 +34,7 @@ class UrlmarksController < ApplicationController
     @urlmark = Urlmark.find(params[:id])
     respond_to do |format|
       if @urlmark.update(urlmarks_params)
-        format.js {  }
+        format.js { redirect_to urlmarks_path, notice: 'urlmark create' }
       else
         format.html { redirect_to urlmarks_path, alert: 'alert url bookmarks not create' }
       end
@@ -45,7 +45,7 @@ class UrlmarksController < ApplicationController
     @urlmark = Urlmark.find(params[:id])
     respond_to do |format|
       if @urlmark.destroy!
-        format.js {  }
+        format.js { redirect_to urlmarks_path, notice: 'urlmark create' }
       else
         format.html { redirect_to urlmarks_path, alert: 'alert url bookmarks not create' }
       end

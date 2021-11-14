@@ -1,0 +1,11 @@
+ <tr id="category-<%= category.id  %>">
+    <th scope="row"><%= category.id %></th>
+    <td><%= category.title %> </td> <br>
+    <td><%= category.public %></td>
+    <td><%= category.category_id %></td>
+    <%#= botones con javascript %>
+    <td><%= link_to 'Show', category, remote: true, class: "btn btn-info" %></td>
+    <td><%= link_to 'Edit', edit_category_path(category), remote: true, class: "btn btn-success"  %></td>
+    <td><%= link_to 'Destroy', category, method: :delete, remote: true, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td> 
+
+</tr>

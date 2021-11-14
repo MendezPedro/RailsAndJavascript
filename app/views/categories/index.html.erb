@@ -1,10 +1,18 @@
 <h1>Categories</h1>
 
-<%= render 'form', category: @category %>
+<%#= render 'form', category: @category %>
+
+<div id="category-form"></div> 
+<div id="category_button">
+    <%= link_to "New category", new_category_path, class: "btn btn-success", remote: true  %>
+</div> 
+
+<div id="category-show"></div> 
 
 <table class="table table-dark">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Title</th>
       <th>public</th>
       <th>Category</th>
@@ -12,16 +20,16 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="category-table">
     <% @categories.each do |categories| %>
       <tr>
+        <th scope="row"><%= categories.id %></th>
         <td><%= categories.title %></td>
         <td><%= categories.public %></td>
         <td><%= categories.category_id %></td>
-        <td><%= @main_category %></td>
-        <td><%= link_to 'Show', categories %></td>
-
-        <td><%= link_to 'Destroy', categories, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', categories, remote: true, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_category_path(categories), remote: true, class: "btn btn-success"  %></td>
+        <td><%= link_to 'Destroy', categories, method: :delete, remote: true, class: "btn btn-warning" , data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
   </tbody>

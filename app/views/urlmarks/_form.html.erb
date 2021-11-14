@@ -24,7 +24,7 @@
         <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %>
     </div>
     
-    <div class = 'actions'>
+    <div id="create-button" class = 'actions'>
         <%= f.submit %>
     </div>
 <% end %>
